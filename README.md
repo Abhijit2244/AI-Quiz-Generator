@@ -37,7 +37,21 @@ An intelligent quiz generator powered by **Vue.js** and **Google's Gemini API** 
 ```bash
 git clone https://github.com/your-username/ai-quiz-generator.git
 cd ai-quiz-generator
+```
+
+### 2. Install Dependencies
+
+```bash
 npm install
-In the project root, create a file named .env:
+```
+### 3. Setup Environment Variable
+
+Create a .env file in the root folder
+```bash
 VITE_GEMINI_API_KEY=your_gemini_api_key_here
+```
+### ▶️ Run the App
+
+```bash
 npm run dev
+```
