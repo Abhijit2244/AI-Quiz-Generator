@@ -130,6 +130,36 @@ input[type="text"]:focus {
   border-radius: 12px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  width: fit-content;
+  min-width: 200px;
+  box-shadow: 0 4px 12px rgba(76, 175, 80, 0.2);
+}
+
+/* Responsive for small screens */
+@media (max-width: 480px) {
+  .start-btn {
+    width: 100%;
+    font-size: 1.1rem;
+    padding: 1rem;
+  }
+
+  .card {
+    padding: 1.2rem;
+  }
+
+  input[type="text"] {
+    font-size: 1rem;
+    padding: 0.6rem;
+  }
+
+  .difficulty-toggle {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .difficulty-toggle button {
+    width: 100%;
+  }
 }
 
 .start-btn:disabled {
