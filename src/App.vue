@@ -10,6 +10,7 @@ import { Type } from "@google/genai";
 
 const difficulty = ref('medium'); // default
 const questions = ref('');
+const questionCount = ref(5); // Default is 5
 const status = ref('start');
 const userAnswers = ref([]);
 const errorMessage = ref('');
@@ -20,6 +21,7 @@ const restartQuiz = () => {
   userAnswers.value = [];
   errorMessage.value = '';
   difficulty.value = 'medium'; 
+  questionCount.value = 5;
 }
 
 const storeAnswer = (answer) => {
@@ -69,7 +71,7 @@ const startQuiz = async (topic) => {
   async function main() {
     const response = await ai.models.generateContent({
       model: "gemini-2.5-flash",
-      contents: `Create 5 ${difficulty.value} multiple-choice quiz questions about "${topic}"`,
+      contents: `Create ${questionCount.value} ${difficulty.value} multiple-choice quiz questions about "${topic}"`,
       config: {
         responseMimeType: "application/json",
         responseSchema: responseSchema,
@@ -99,11 +101,11 @@ const startQuiz = async (topic) => {
     <header>
       <div class="container">
         <img src="./assets/logo.png" alt="" class="logo">
-        <h1>Quiz Generator</h1>
+        <h1>AI Quiz Generator</h1>
       </div>
     </header>
 
-    <StartScreen v-if="status == 'start'" v-model:difficulty="difficulty" @start-quiz="startQuiz" />
+    <StartScreen v-if="status == 'start'" v-model:difficulty="difficulty" v-model:questionCount="questionCount" @start-quiz="startQuiz" />
     <Loader v-if="status == 'loading'" />
     <Quiz v-if="status == 'ready'" @end-quiz="status = 'finished'" @store-answer="storeAnswer"
       :questions="questions.results" />

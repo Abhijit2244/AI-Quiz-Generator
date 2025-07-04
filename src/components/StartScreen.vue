@@ -4,8 +4,9 @@ import { ref, defineEmits, defineProps } from 'vue';
 const props = defineProps({
   errorMessage: String,
   difficulty: String,
+  questionCount: Number,
 });
-const emit = defineEmits(['start-quiz', 'update:difficulty']);
+const emit = defineEmits(['start-quiz', 'update:difficulty', 'update:questionCount']);
 const topic = ref('');
 
 const start = () => {
@@ -13,6 +14,11 @@ const start = () => {
     emit('start-quiz', topic.value.trim());
   }
 };
+
+const setQuestionCount = (val) => {
+  emit('update:questionCount', parseInt(val));
+};
+
 
 const setDifficulty = (level) => {
   emit('update:difficulty', level);
@@ -41,6 +47,19 @@ const setDifficulty = (level) => {
           {{ level }}
         </button>
       </div>
+
+      <h3>How Many Questions?</h3>
+<div class="question-range">
+  <input
+    type="range"
+    min="5"
+    max="30"
+    :value="questionCount"
+    @input="setQuestionCount($event.target.value)"
+  />
+  <span>{{ questionCount }}</span>
+</div>
+
 
       <button class="start-btn" @click="start" :disabled="!topic">
         🚀 Start Quiz
@@ -107,6 +126,7 @@ input[type="text"]:focus {
   border-radius: 20px;
   border: 1px solid #ccc;
   background-color: #f0f0f0;
+  color: #212121;
   font-weight: 500;
   text-transform: capitalize;
   transition: all 0.3s ease;
@@ -176,4 +196,16 @@ input[type="text"]:focus {
   color: #d32f2f;
   font-size: 0.95rem;
 }
+
+.question-range {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 1.5rem;
+}
+
+.question-range input[type="range"] {
+  width: 100%;
+}
+
 </style>
