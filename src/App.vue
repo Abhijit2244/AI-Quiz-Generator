@@ -8,7 +8,7 @@ import { ref } from 'vue';
 import { Type } from "@google/genai";
 
 
-
+const difficulty = ref('medium'); // default
 const questions = ref('');
 const status = ref('start');
 const userAnswers = ref([]);
@@ -19,6 +19,7 @@ const restartQuiz = () => {
   status.value = 'start';
   userAnswers.value = [];
   errorMessage.value = '';
+  difficulty.value = 'medium'; 
 }
 
 const storeAnswer = (answer) => {
@@ -68,9 +69,7 @@ const startQuiz = async (topic) => {
   async function main() {
     const response = await ai.models.generateContent({
       model: "gemini-2.5-flash",
-      contents: ` Create 5 quiz questions about ${topic}
-      Difficulty: Medium
-      Type: Multiple Choice `,
+      contents: `Create 5 ${difficulty.value} multiple-choice quiz questions about "${topic}"`,
       config: {
         responseMimeType: "application/json",
         responseSchema: responseSchema,
@@ -104,7 +103,7 @@ const startQuiz = async (topic) => {
       </div>
     </header>
 
-    <StartScreen v-if="status == 'start'" @start-quiz="startQuiz" />
+    <StartScreen v-if="status == 'start'" v-model:difficulty="difficulty" @start-quiz="startQuiz" />
     <Loader v-if="status == 'loading'" />
     <Quiz v-if="status == 'ready'" @end-quiz="status = 'finished'" @store-answer="storeAnswer"
       :questions="questions.results" />
