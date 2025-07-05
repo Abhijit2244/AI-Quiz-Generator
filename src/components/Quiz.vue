@@ -61,7 +61,7 @@ const submitAnswer = ()=>{
             </button>
         </div>
 
-        <button v-if="selectedOption" @click="submitAnswer">Send</button>
+        <button v-if="selectedOption" @click="submitAnswer">Submit</button>
 
     </section>
 </template>
