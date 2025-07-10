@@ -35,7 +35,7 @@ An intelligent quiz generator powered by **Vue.js** and **Google's Gemini API** 
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/ai-quiz-generator.git
+git clone https://github.com/Abhijit2244/AI-Quiz-Generator.git
 cd ai-quiz-generator
 ```
 
