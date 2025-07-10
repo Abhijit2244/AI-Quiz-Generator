@@ -6,21 +6,21 @@ An intelligent quiz generator powered by **Vue.js** and **Google's Gemini API** 
 
 ## 🚀 Features
 
-- 🔮 AI-generated quiz questions on any topic
-- 📚 Multiple-choice format with medium difficulty
-- ⚡ Fast and responsive Vue 3 + Vite frontend
-- 💡 Real-time feedback and results
-- 🔐 API key securely handled via `.env` file
-- 🧼 Clean component structure (`StartScreen`, `Quiz`, `Result`, `Loader`)
+- 🔮 AI-generated quiz questions on any topic  
+- 🎚️ Choose difficulty: Easy, Medium, or Hard  
+- 🎯 Adjustable number of questions (5 to 30) with a slider  
+- 📚 Multiple-choice format with medium difficulty  
+- ⚡ Fast and responsive Vue 3 + Vite frontend  
+- 💡 Real-time feedback and results  
 
 ---
-<!-- 
-## 🖼️ Preview
 
-![AI Quiz Generator Screenshot](./public/preview.png) <!-- Replace this with an actual image path -->
-<!-- 
+## 🖼️ Live Preview
+
+👉 [**Try it live**](https://ai-quiz-generator-sandy.vercel.app/)  
+
 ---
- -->
+
 ## 🛠️ Tech Stack
 
 - **Vue 3 (Composition API)**
@@ -44,14 +44,20 @@ cd ai-quiz-generator
 ```bash
 npm install
 ```
+
 ### 3. Setup Environment Variable
 
-Create a .env file in the root folder
-```bash
+Create a `.env` file in the root folder:
+
+```env
 VITE_GEMINI_API_KEY=your_gemini_api_key_here
 ```
-### ▶️ Run the App
+
+### 4. Run the App
 
 ```bash
 npm run dev
 ```
+
+---
+
